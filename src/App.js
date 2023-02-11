@@ -14,11 +14,7 @@ import Escrow from './abis/Escrow.json'
 import config from './config.json';
 
 
-const getMetadata = async (uri) => {
-  const [, hash] = uri.split('/');
-  const file = await ipfs.files.cat(hash);
-  return file.toString('utf8');
-};
+
 
 function App() {
   const [account,setAccount] = useState(null);
@@ -40,11 +36,15 @@ function App() {
 
     const homes = [];
     for (var i = 1;i<= totalSupply;i++){
-      const uri = await realEstate.tokenURI(i);
+      // const uri = await realEstate.tokenURI(i);
+      const uri = "https://nftstorage.link/ipfs/QmQUozrHLAusXDxrvsESJ3PYB3rUeUuBAvVWw6nop2uu7c/3.png"
       const  response = await fetch(uri);
-      // console.log(typeof response)
-      const metadata =  getMetadata(response.url);
-      console.log(metadata);
+      console.log(response.json())
+      console.log("https://nftstorage.link/ipfs/QmQUozrHLAusXDxrvsESJ3PYB3rUeUuBAvVWw6nop2uu7c/3.png");
+
+      // https://ipfs.io/ipfs/QmQUozrHLAusXDxrvsESJ3PYB3rUeUuBAvVWw6nop2uu7c/3.png
+      // const metadata =  getMetadata(response.url);
+      // console.log(metadata);
       
     
       
